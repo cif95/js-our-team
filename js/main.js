@@ -33,7 +33,7 @@ const team = [
 
 
 for ( let i = 0 ; i < team.length; i ++){
-	generateMemberCard('div.my-card-group', team[i].image, team[i].name, team[i].role)
+	generateMemberCard(team[i].image, team[i].name, team[i].role)
 	console.log(team[i].name, team[i].role, team[i].image);
 }
 
@@ -50,7 +50,7 @@ document.getElementById('send-btn').addEventListener('click', function(){
 	}
 	team.push(newMember);
 	console.log(team);
-	generateMemberCard('div.my-card-group', newMember.image, newMember.name, newMember.role);
+	generateMemberCard(newMember.image, newMember.name, newMember.role);
 	newMemberName.value = '';
 	newMemberRole.value = '';
 	newMemberImage.value = '';
@@ -58,13 +58,12 @@ document.getElementById('send-btn').addEventListener('click', function(){
 
 /**
  * Function that generate a new member card as a dom element
- * @param {*} elementQuerySelector query selector value of DOM element in which the new member card will be added
  * @param {*} imageFileName name of the new member image file
  * @param {*} memberName name of the new member
  * @param {*} memberRole role of the new member 
  */
-function generateMemberCard(elementQuerySelector, imageFileName, memberName, memberRole ) {
-	document.querySelector(elementQuerySelector).innerHTML += `
+function generateMemberCard( imageFileName, memberName, memberRole ) {
+	document.querySelector('div.my-card-group').innerHTML += `
 	<div class="team-member card col-6 col-md-3 col-md-2">
 		<img class="card-img-top" src="img/${imageFileName}" alt="member photo"></i>
 		<div class="card-body">

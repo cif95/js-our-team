@@ -23,3 +23,7 @@ section#team div.my-card-group div.card img{
 	border-radius:50%;
 	filter: drop-shadow(11px 4px 6px #1675db) grayscale(65%);
 }
+
+section#team div#new-member-form{
+	width:250px;
+}
