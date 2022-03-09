@@ -35,16 +35,23 @@ const team = [
 // Ogni membro ha le informazioni necessarie per stampare le relative informazioni: Nome, Ruolo e Foto.
 // MILESTONE 1:
 // stampare su console le informazioni di nome, ruolo e la stringa della foto
-for ( let i = 0 ; i < team.length; i ++){
-	console.log(team[i].name);
-	console.log(team[i].role);
-	console.log(team[i].image);
-}
-
 // MILESTONE 2:
 // stampare le stesse informazioni su DOM sottoforma di stringhe
-
 // BONUS 1:
 // trasformare la stringa foto in una immagine effettiva
+
+
+for ( let i = 0 ; i < team.length; i ++){
+	document.getElementById('team').innerHTML += `
+	<div class="team-member">
+		<h2>${team[i].name}</h2>
+		<p>${team[i].role}</p>
+		<img src="img/${team[i].image}" alt="member photo"></i>
+	</div>`;
+
+	console.log(team[i].name, team[i].role, team[i].image);
+}
+
+
 // BONUS 2:
 // organizzare i singoli membri in card/schede
