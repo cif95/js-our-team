@@ -49,15 +49,15 @@ document.getElementById('send-btn').addEventListener('click', function(){
 		image: newMemberImage.value,
 	}
 	team.push(newMember);
-	console.log(team);
 	generateMemberCard(newMember.image, newMember.name, newMember.role);
 	newMemberName.value = '';
 	newMemberRole.value = '';
 	newMemberImage.value = '';
 })
 
+
 /**
- * Function that generate a new member card as a dom element
+ * Function that generates a new member card as a dom element
  * @param {*} imageFileName name of the new member image file
  * @param {*} memberName name of the new member
  * @param {*} memberRole role of the new member 
