@@ -1,0 +1,7 @@
+body{
+	font-family: 'Raleway';
+}
+
+section#team div.card-group div.card{
+	width:calc(100% / 6);
+}
