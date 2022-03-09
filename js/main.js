@@ -39,29 +39,21 @@ const team = [
 // stampare le stesse informazioni su DOM sottoforma di stringhe
 // BONUS 1:
 // trasformare la stringa foto in una immagine effettiva
+// BONUS 2:
+// organizzare i singoli membri in card/schede
 
 
 for ( let i = 0 ; i < team.length; i ++){
-	document.querySelector('div.card-group').innerHTML += `
-	<div class="team-member card">
+	document.querySelector('div.my-card-group').innerHTML += `
+	<div class="team-member card col-6 col-md-3 col-md-2">
 		<img class="card-img-top" src="img/${team[i].image}" alt="member photo"></i>
 		<div class="card-body">
-			<h5 class="card-title">${team[i].name}</h5>
-			<p class="card-text">${team[i].role}</p>
+			<h5 class="card-title fw-bold">${team[i].name}</h5>
+			<p class="card-text fs-5">${team[i].role}</p>
 		</div>
 	</div>`;
 	console.log(team[i].name, team[i].role, team[i].image);
 }
 
-/* <div class="card">
-<img class="card-img-top" src="..." alt="Card image cap">
-<div class="card-body">
-	<h5 class="card-title">Card title</h5>
-	<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-	<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-</div>
-</div> */
 
 
-// BONUS 2:
-// organizzare i singoli membri in card/schede
