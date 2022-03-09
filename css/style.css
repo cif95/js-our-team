@@ -3,14 +3,19 @@ body{
 	font-family: 'Montserrat', sans-serif;
 }
 
-section#team{
-	max-width:1200px;
+section#team div.container-fluid{
+	padding-top:5rem;
+	max-width:1500px;
 }
 
 section#team div.my-card-group div.card{
-	min-width:150px;
+	width:220px;
 	background-color:transparent!important;
 	border:none !important;
+}
+
+section#team div.my-card-group div.card p.card-text{
+	font-size:.85rem;
 }
 
 section#team div.my-card-group div.card img{

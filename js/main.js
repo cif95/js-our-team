@@ -49,11 +49,30 @@ for ( let i = 0 ; i < team.length; i ++){
 		<img class="card-img-top" src="img/${team[i].image}" alt="member photo"></i>
 		<div class="card-body">
 			<h5 class="card-title fw-bold">${team[i].name}</h5>
-			<p class="card-text fs-5">${team[i].role}</p>
+			<p class="card-text">${team[i].role}</p>
 		</div>
 	</div>`;
 	console.log(team[i].name, team[i].role, team[i].image);
 }
 
+// Aggiungi in fondo all'esercizio un form con nome, ruolo e un link all'immagine 
+// che con un bottone consentano di aggiungere un team member per volta in più a quelli già presenti.
 
 
+document.getElementById('send-btn').addEventListener('click', function(){
+	const newMember = {
+		name: document.getElementById('member-name').value,
+		role: document.getElementById('member-role').value,
+		image: document.getElementById('member-image').value,
+	}
+	team.push(newMember);
+	console.log(team);
+	document.querySelector('div.my-card-group').innerHTML += `
+	<div class="team-member card col-6 col-md-3 col-md-2">
+		<img class="card-img-top" src="img/${newMember.image}" alt="member photo"></i>
+		<div class="card-body">
+			<h5 class="card-title fw-bold">${newMember.name}</h5>
+			<p class="card-text">${newMember.role}</p>
+		</div>
+	</div>`;
+})
