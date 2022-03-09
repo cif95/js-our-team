@@ -31,48 +31,45 @@ const team = [
 	},
 ];
 
-// Viene fornito un array di oggetti in allegato in cui è definito un array di oggetti che rappresentano i membri del team.
-// Ogni membro ha le informazioni necessarie per stampare le relative informazioni: Nome, Ruolo e Foto.
-// MILESTONE 1:
-// stampare su console le informazioni di nome, ruolo e la stringa della foto
-// MILESTONE 2:
-// stampare le stesse informazioni su DOM sottoforma di stringhe
-// BONUS 1:
-// trasformare la stringa foto in una immagine effettiva
-// BONUS 2:
-// organizzare i singoli membri in card/schede
-
 
 for ( let i = 0 ; i < team.length; i ++){
-	document.querySelector('div.my-card-group').innerHTML += `
-	<div class="team-member card col-6 col-md-3 col-md-2">
-		<img class="card-img-top" src="img/${team[i].image}" alt="member photo"></i>
-		<div class="card-body">
-			<h5 class="card-title fw-bold">${team[i].name}</h5>
-			<p class="card-text">${team[i].role}</p>
-		</div>
-	</div>`;
+	generateMemberCard('div.my-card-group', team[i].image, team[i].name, team[i].role)
 	console.log(team[i].name, team[i].role, team[i].image);
 }
 
-// Aggiungi in fondo all'esercizio un form con nome, ruolo e un link all'immagine 
-// che con un bottone consentano di aggiungere un team member per volta in più a quelli già presenti.
+const newMemberName = document.getElementById('member-name');
+const newMemberRole = document.getElementById('member-role');
+const newMemberImage = document.getElementById('member-image');
 
 
 document.getElementById('send-btn').addEventListener('click', function(){
 	const newMember = {
-		name: document.getElementById('member-name').value,
-		role: document.getElementById('member-role').value,
-		image: document.getElementById('member-image').value,
+		name: newMemberName.value,
+		role: newMemberRole.value,
+		image: newMemberImage.value,
 	}
 	team.push(newMember);
 	console.log(team);
-	document.querySelector('div.my-card-group').innerHTML += `
-	<div class="team-member card col-6 col-md-3 col-md-2">
-		<img class="card-img-top" src="img/${newMember.image}" alt="member photo"></i>
-		<div class="card-body">
-			<h5 class="card-title fw-bold">${newMember.name}</h5>
-			<p class="card-text">${newMember.role}</p>
-		</div>
-	</div>`;
+	generateMemberCard('div.my-card-group', newMember.image, newMember.name, newMember.role);
+	newMemberName.value = '';
+	newMemberRole.value = '';
+	newMemberImage.value = '';
 })
+
+/**
+ * Function that generate a new member card as a dom element
+ * @param {*} elementQuerySelector query selector value of DOM element in which the new member card will be added
+ * @param {*} imageFileName name of the new member image file
+ * @param {*} memberName name of the new member
+ * @param {*} memberRole role of the new member 
+ */
+function generateMemberCard(elementQuerySelector, imageFileName, memberName, memberRole ) {
+	document.querySelector(elementQuerySelector).innerHTML += `
+	<div class="team-member card col-6 col-md-3 col-md-2">
+		<img class="card-img-top" src="img/${imageFileName}" alt="member photo"></i>
+		<div class="card-body">
+			<h5 class="card-title fw-bold">${memberName}</h5>
+			<p class="card-text">${memberRole}</p>
+		</div>
+	</div>`
+}
