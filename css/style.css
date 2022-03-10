@@ -9,7 +9,7 @@ section#team div.container-fluid{
 }
 
 section#team div.my-card-group div.card{
-	width:220px;
+	min-width:220px;
 	background-color:transparent!important;
 	border:none !important;
 }
@@ -19,11 +19,13 @@ section#team div.my-card-group div.card p.card-text{
 }
 
 section#team div.my-card-group div.card img{
-
+	width:180px;
+	height:180px;
+	object-fit: cover;
 	border-radius:50%;
 	filter: drop-shadow(11px 4px 6px #1675db) grayscale(65%);
 }
 
 section#team div#new-member-form{
-	width:250px;
+	max-width:250px;
 }

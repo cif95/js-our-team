@@ -33,26 +33,19 @@ const team = [
 
 
 for ( let i = 0 ; i < team.length; i ++){
-	generateMemberCard(team[i].image, team[i].name, team[i].role)
+	generateMemberCard(team[i].name, team[i].role, 'img/'+team[i].image);
 	console.log(team[i].name, team[i].role, team[i].image);
 }
 
-const newMemberName = document.getElementById('member-name');
-const newMemberRole = document.getElementById('member-role');
-const newMemberImage = document.getElementById('member-image');
 
-
-document.getElementById('send-btn').addEventListener('click', function(){
-	const newMember = {
-		name: newMemberName.value,
-		role: newMemberRole.value,
-		image: newMemberImage.value,
+document.getElementById('add-btn').addEventListener('click', function(){
+	const inputElements = document.querySelectorAll('input');
+	memberData = [];
+	for ( let i = 0; i < inputElements.length; i++){
+		memberData.push(inputElements[i].value);
+		inputElements[i].value = '';
 	}
-	team.push(newMember);
-	generateMemberCard(newMember.image, newMember.name, newMember.role);
-	newMemberName.value = '';
-	newMemberRole.value = '';
-	newMemberImage.value = '';
+	generateMemberCard(memberData[0], memberData[1], memberData[2]);
 })
 
 
@@ -62,13 +55,15 @@ document.getElementById('send-btn').addEventListener('click', function(){
  * @param {*} memberName name of the new member
  * @param {*} memberRole role of the new member 
  */
-function generateMemberCard( imageFileName, memberName, memberRole ) {
-	document.querySelector('div.my-card-group').innerHTML += `
-	<div class="team-member card col-6 col-md-3 col-md-2">
-		<img class="card-img-top" src="img/${imageFileName}" alt="member photo"></i>
-		<div class="card-body">
-			<h5 class="card-title fw-bold">${memberName}</h5>
-			<p class="card-text">${memberRole}</p>
-		</div>
-	</div>`
+function generateMemberCard(memberName, memberRole, imageUrl) {
+	if (imageUrl != '' && memberName != '' && memberRole!= ''){
+		document.querySelector('div.my-card-group').innerHTML += `
+		<div class="team-member card col-6 col-md-3 col-md-2">
+			<img class="card-img-top mx-auto" src="${imageUrl}" alt="member photo"></img>
+			<div class="card-body">
+				<h5 class="card-title fw-bold">${memberName}</h5>
+				<p class="card-text">${memberRole}</p>
+			</div>
+		</div>`;
+	}
 }
